@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.Design;
-using MadsKristensen.ExtensibilityTools.ThemeColorsToolWindow;
 using Microsoft;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;

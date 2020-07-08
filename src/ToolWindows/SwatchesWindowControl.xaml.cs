@@ -6,7 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using Microsoft.VisualStudio.PlatformUI;
 
-namespace MadsKristensen.ExtensibilityTools.ThemeColorsToolWindow
+namespace VSThemeColors
 {
     /// <summary>
     /// Interaction logic for SwatchesWindowControl.

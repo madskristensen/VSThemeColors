@@ -2,9 +2,8 @@
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.PlatformUI;
 using Microsoft.VisualStudio.Shell;
-using VSThemeColors;
 
-namespace MadsKristensen.ExtensibilityTools.ThemeColorsToolWindow
+namespace VSThemeColors
 {
     [Guid(PackageGuids.guidSwatchWindowString)]
     public class SwatchesWindow : ToolWindowPane
