@@ -15,7 +15,7 @@ namespace VSThemeColors
         public const string guidVSThemeColorsPackageString = "789c0c6f-9cd6-4086-9c42-8d951049a4d2";
         public static Guid guidVSThemeColorsPackage = new Guid(guidVSThemeColorsPackageString);
 
-        public const string guidSwatchWindowString = "aeb5f170-736b-460e-9793-876b6bf60c1b";
+        public const string guidSwatchWindowString = "aeb5f170-736b-460e-9793-876b6bf60c1c";
         public static Guid guidSwatchWindow = new Guid(guidSwatchWindowString);
 
         public const string guidVSThemeColorsPackageCmdSetString = "ea3f240e-c9cb-49a4-b603-3a54d2f6fac6";
