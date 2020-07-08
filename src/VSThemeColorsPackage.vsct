@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct"/>
+
+  <Commands package="guidVSThemeColorsPackage">
+    <Buttons>
+      <Button guid="guidVSThemeColorsPackageCmdSet" id="OpenThemeWindowId" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="ImageCatalogGuid" id="ColorPalette" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <Strings>
+          <ButtonText>Theme Swatches</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidVSThemeColorsPackage" value="{789c0c6f-9cd6-4086-9c42-8d951049a4d2}" />
+    <GuidSymbol name="guidSwatchWindow" value="{aeb5f170-736b-460e-9793-876b6bf60c1b}" />
+
+    <GuidSymbol name="guidVSThemeColorsPackageCmdSet" value="{ea3f240e-c9cb-49a4-b603-3a54d2f6fac6}">
+      <IDSymbol name="OpenThemeWindowId" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
