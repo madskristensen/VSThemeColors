@@ -10,8 +10,9 @@ using Task = System.Threading.Tasks.Task;
 
 namespace VSThemeColors
 {
-    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(PackageGuids.guidVSThemeColorsPackageString)]
+    [InstalledProductRegistration(Vsix.Name, Vsix.Description, Vsix.Version)]
+    [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [ProvideToolWindow(typeof(SwatchesWindow), Style = VsDockStyle.Tabbed, Window = "DocumentWell", Orientation = ToolWindowOrientation.none)]
     [ProvideToolWindowVisibility(typeof(SwatchesWindow), VSConstants.UICONTEXT.NoSolution_string)]
     [ProvideToolWindowVisibility(typeof(SwatchesWindow), VSConstants.UICONTEXT.SolutionHasSingleProject_string)]
@@ -28,12 +29,7 @@ namespace VSThemeColors
 
         public override IVsAsyncToolWindowFactory GetAsyncToolWindowFactory(Guid toolWindowType)
         {
-            if (toolWindowType.Equals(PackageGuids.guidSwatchWindow))
-            {
-                return this;
-            }
-
-            return null;
+            return toolWindowType.Equals(PackageGuids.guidSwatchWindow) ? this : null;
         }
 
         protected override string GetToolWindowTitle(Type toolWindowType, int id)
