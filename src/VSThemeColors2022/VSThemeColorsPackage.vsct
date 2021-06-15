@@ -8,7 +8,7 @@
   <Commands package="guidVSThemeColorsPackage">
     <Buttons>
       <Button guid="guidVSThemeColorsPackageCmdSet" id="OpenThemeWindowId" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS2" />
         <Icon guid="ImageCatalogGuid" id="ColorPalette" />
         <CommandFlag>IconIsMoniker</CommandFlag>
         <Strings>
