@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30306.19
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31410.414
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSThemeColors", "src\VSThemeColors.csproj", "{88B64384-764E-49BF-9EBF-8DB1ECA658DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSThemeColors2019", "src\VSThemeColors2019\VSThemeColors2019.csproj", "{88B64384-764E-49BF-9EBF-8DB1ECA658DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{42FBE92B-9D4C-493F-B9EE-5A8CFC976516}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,16 +12,39 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "VSThemeColorsShared", "src\VSThemeColorsShared\VSThemeColorsShared.shproj", "{00278F8B-F57A-4C53-A54C-D2CD09191E99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSThemeColors2022", "src\VSThemeColors2022\VSThemeColors2022.csproj", "{88B64384-764E-49BF-9EBF-8DB1ECA658DC}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		src\VSThemeColorsShared\VSThemeColorsShared.projitems*{00278f8b-f57a-4c53-a54c-d2cd09191e99}*SharedItemsImports = 13
+		src\VSThemeColorsShared\VSThemeColorsShared.projitems*{88b64384-764e-49bf-9ebf-8db1eca658db}*SharedItemsImports = 4
+		src\VSThemeColorsShared\VSThemeColorsShared.projitems*{88b64384-764e-49bf-9ebf-8db1eca658dc}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Debug|x86.ActiveCfg = Debug|x86
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Debug|x86.Build.0 = Debug|x86
 		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Release|x86.ActiveCfg = Release|x86
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DB}.Release|x86.Build.0 = Release|x86
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Debug|x86.ActiveCfg = Debug|x86
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Debug|x86.Build.0 = Debug|x86
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Release|x86.ActiveCfg = Release|x86
+		{88B64384-764E-49BF-9EBF-8DB1ECA658DC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
