@@ -119,7 +119,8 @@ namespace VSThemeColors
         {
             foreach (Grid child in Root.Children.OfType<Grid>())
             {
-                var propertyName = ((PropertyInfo)child.Tag).Name;
+                var tag = child.Tag as PropertyInfo;
+                var propertyName = $"{tag.DeclaringType.FullName}.{tag.Name}";
 
                 var show = propertyName.IndexOf(((TextBox)sender).Text, StringComparison.OrdinalIgnoreCase) > -1;
                 child.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
