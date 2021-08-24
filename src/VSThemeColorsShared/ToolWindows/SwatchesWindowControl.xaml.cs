@@ -19,10 +19,34 @@ namespace VSThemeColors
         public SwatchesWindowControl()
         {
             InitializeComponent();
-            Type environmentColors = typeof(EnvironmentColors);
+
+            AddColors(typeof(CommonControlsColors));
+            AddColors(typeof(CommonDocumentColors));
+            AddColors(typeof(EnvironmentColors));
+            AddColors(typeof(HeaderColors));
+            AddColors(typeof(InfoBarColors));
+            AddColors(typeof(ProgressBarColors));
+            AddColors(typeof(SearchControlColors));
+            AddColors(typeof(StartPageColors));
+            AddColors(typeof(ThemedDialogColors));
+
+            if (Vsix.Name == "VS Theme Colors 2022")
+            {
+                AddColors(Type.GetType("Microsoft.VisualStudio.PlatformUI.ThemedUtilityDialogColors, Microsoft.VisualStudio.Shell.15.0, Version=17.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", true));
+            }
+
+            AddColors(typeof(TreeViewColors));
+            AddColors(typeof(UnthemedDialogColors));
+            AddColors(typeof(VisualStudioInstallerColors));
+
+            SizeChanged += OnSizeChanged;
+        }
+
+        private void AddColors(Type typeColors)
+        {
             var tileSize = CalculateTileSize();
 
-            foreach (PropertyInfo property in environmentColors.GetProperties(BindingFlags.Public | BindingFlags.Static))
+            foreach (PropertyInfo property in typeColors.GetProperties(BindingFlags.Public | BindingFlags.Static))
             {
                 if (property.Name.EndsWith("BrushKey"))
                 {
@@ -30,8 +54,8 @@ namespace VSThemeColors
                     {
                         Width = tileSize,
                         Height = tileSize,
-                        Tag = property.Name,
-                        ToolTip = property.Name
+                        Tag = property,
+                        ToolTip = $"{typeColors}.{property.Name}",
                     };
 
                     tile.SetResourceReference(BackgroundProperty, property.GetValue(null));
@@ -39,8 +63,6 @@ namespace VSThemeColors
                     Root.Children.Add(tile);
                 }
             }
-
-            SizeChanged += OnSizeChanged;
         }
 
         private double CalculateTileSize()
@@ -75,22 +97,32 @@ namespace VSThemeColors
         private void TileOnMouseDown(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
             var tile = (Grid)sender;
+            var token = tile.Tag as PropertyInfo;
             var parent = (Panel)tile.Parent;
             parent.Children.Remove(tile);
             parent.Children.Insert(0, tile);
 
-            var propertyName = (string)tile.ToolTip;
-            BrushName.Text = $"{typeof(EnvironmentColors).Name}.{propertyName}";
-            XamlNamespace.Text = $"xmlns:platformUI=\"clr-namespace:{typeof(EnvironmentColors).Namespace};assembly={typeof(EnvironmentColors).Assembly.GetName().Name}\"";
-            XamlUsage.Text = $"{{DynamicResource {{x:Static platformUI:EnvironmentColors.{propertyName}}}}}";
-            CSharpUsage.Text = $"{{TARGET_OBJECT}}.SetResourceReference({{DEPENDENCY_PROPERTY}}, {typeof(EnvironmentColors).FullName}.{propertyName});";
+            var propertyName = token.Name;
+            var className = token.DeclaringType.Name;
+            var fullClassName = token.DeclaringType.FullName;
+            var ns = token.DeclaringType.Namespace;
+            var assemblyName = token.DeclaringType.Assembly.GetName().Name;
+
+            //var propertyName = (string)tile.ToolTip;
+            BrushName.Text = propertyName;
+            XamlNamespace.Text = $"xmlns:platformUI=\"clr-namespace:{ns};assembly={assemblyName}\"";
+            XamlUsage.Text = $"{{DynamicResource {{x:Static platformUI:{className}.{propertyName}}}}}";
+            CSharpUsage.Text = $"{{TARGET_OBJECT}}.SetResourceReference({{DEPENDENCY_PROPERTY}}, {fullClassName}.{propertyName});";
         }
 
         private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
         {
             foreach (Grid child in Root.Children.OfType<Grid>())
             {
-                var show = ((string)child.Tag).IndexOf(((TextBox)sender).Text, StringComparison.OrdinalIgnoreCase) > -1;
+                var tag = child.Tag as PropertyInfo;
+                var propertyName = $"{tag.DeclaringType.FullName}.{tag.Name}";
+
+                var show = propertyName.IndexOf(((TextBox)sender).Text, StringComparison.OrdinalIgnoreCase) > -1;
                 child.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
             }
         }
