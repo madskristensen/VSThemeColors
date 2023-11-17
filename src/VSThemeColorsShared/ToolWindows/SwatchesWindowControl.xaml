@@ -7,6 +7,7 @@
              xmlns:catalog="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.ImageCatalog"
              xmlns:imaging="clr-namespace:Microsoft.VisualStudio.Imaging;assembly=Microsoft.VisualStudio.Imaging"
              xmlns:PlatformUI="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Imaging"
+             xmlns:platformUI="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
              Background="{DynamicResource VsBrush.Window}"
              Foreground="{DynamicResource VsBrush.WindowText}"
              mc:Ignorable="d"
@@ -36,7 +37,7 @@
             <ColumnDefinition Width="24" />
         </Grid.ColumnDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Content="Search" Foreground="{DynamicResource {x:Static local:SwatchesWindow.TextBrushKey}}" />
-        <TextBox Grid.Row="0" Grid.Column="1" TextChanged="TextBoxBase_OnTextChanged" Margin="0 2"
+        <TextBox x:Name="SearchTextBox" Grid.Row="0" Grid.Column="1" TextChanged="TextBoxBase_OnTextChanged" Margin="0 2"
                  Padding="0 0 20 0"
                  Foreground="{DynamicResource {x:Static local:SwatchesWindow.TextBoxTextBrushKey}}" 
                  Background="{DynamicResource {x:Static local:SwatchesWindow.TextBoxBackgroundBrushKey}}" 
@@ -77,8 +78,20 @@
             <imaging:CrispImage Width="16" Height="16" Moniker="{x:Static catalog:KnownMonikers.Copy}" />
         </Button>
 
-        <ScrollViewer Grid.Row="5" Grid.ColumnSpan="3">
-            <WrapPanel x:Name="Root" />
-        </ScrollViewer>
+        <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="6" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TreeView x:Name="ColorTreeView" BorderThickness="0 1 1 0"
+                      Foreground="{DynamicResource {x:Static local:SwatchesWindow.TextBoxTextBrushKey}}" 
+                      Background="{DynamicResource {x:Static local:SwatchesWindow.TextBoxBackgroundBrushKey}}" 
+                      BorderBrush="{DynamicResource {x:Static local:SwatchesWindow.TextBoxBorderBrushKey}}"></TreeView>
+            <GridSplitter Grid.Column="1" ResizeDirection="Columns" ResizeBehavior="PreviousAndNext" Background="Transparent" HorizontalAlignment="Stretch" />
+            <ScrollViewer Grid.Column="2">
+                <WrapPanel x:Name="Root" />
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>
